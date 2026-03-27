@@ -71,7 +71,7 @@ export const HeroSection = () => {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary mb-6"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-foreground/40 animate-pulse" />
               <span className="text-xs font-medium text-muted-foreground tracking-wide">16 y/o Builder · Open to collaborate</span>
             </motion.div>
 
