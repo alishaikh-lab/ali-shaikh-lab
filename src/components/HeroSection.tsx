@@ -13,7 +13,7 @@ export const HeroSection = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto w-full">
         <div className="flex flex-col lg:grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
-          {/* Image — shows first on mobile */}
+          {/* Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -21,7 +21,6 @@ export const HeroSection = () => {
             className="lg:col-span-2 flex justify-center lg:order-2"
           >
             <div className="relative">
-              {/* Glow ring */}
               <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-foreground/10 via-transparent to-foreground/5 blur-2xl" />
               
               <div className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-[2rem] overflow-hidden glass p-1">
@@ -81,23 +80,44 @@ export const HeroSection = () => {
               Ship it.
             </h1>
 
-            {/* The highlighted tagline */}
+            {/* Highlighted tagline — the KEY visual element */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
               className="relative mb-6 inline-block"
             >
-              <div className="relative px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl border border-border bg-secondary/50">
-                <p className="text-sm sm:text-base md:text-lg font-heading font-semibold text-foreground leading-snug">
+              <div className="relative px-4 py-3.5 sm:px-6 sm:py-4 rounded-2xl border border-border overflow-hidden">
+                {/* Animated shimmer */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/[0.03] to-transparent"
+                  animate={{ x: ["-100%", "200%"] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
+                />
+                <p className="relative z-10 text-sm sm:text-base md:text-lg font-heading font-semibold text-foreground leading-snug">
                   <span className="text-foreground">Ali Shaikh</span>
                   <span className="text-muted-foreground"> is </span>
                   <span className="relative inline-block">
+                    <motion.span
+                      className="absolute bottom-0 left-0 right-0 h-[45%] bg-foreground/15 rounded-sm"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ delay: 0.8, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                      style={{ originX: 0 }}
+                    />
                     <span className="relative z-10 text-foreground font-bold">India's Youngest Digital Innovator</span>
-                    <span className="absolute bottom-0 left-0 right-0 h-[40%] bg-foreground/10 rounded-sm -z-0" />
                   </span>
                   <span className="text-muted-foreground"> in </span>
-                  <span className="text-foreground font-bold">Tech & AI</span>
+                  <span className="relative inline-block">
+                    <motion.span
+                      className="absolute bottom-0 left-0 right-0 h-[45%] bg-foreground/10 rounded-sm"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ delay: 1.0, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                      style={{ originX: 0 }}
+                    />
+                    <span className="relative z-10 text-foreground font-bold">Tech & AI</span>
+                  </span>
                 </p>
               </div>
             </motion.div>
