@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const projects = [
@@ -10,6 +10,7 @@ const projects = [
     link: "https://aircle.lovable.app",
     tags: ["Chat", "Privacy", "Real-time"],
     icon: MessageCircle,
+    status: "Live",
   },
 ];
 
@@ -50,16 +51,20 @@ export const ProjectsPreview = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group glass rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 hover:bg-secondary/30 transition-all duration-500"
+              whileHover={{ y: -3, transition: { duration: 0.3 } }}
+              className="group glass rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
-                <project.icon size={22} className="text-foreground" strokeWidth={1.5} />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
+                <project.icon size={22} className="text-foreground sm:w-7 sm:h-7" strokeWidth={1.5} />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-heading text-lg sm:text-xl font-bold text-foreground mb-1.5 sm:mb-2 flex items-center gap-2">
-                  {project.title}
-                  <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                </h3>
+                <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+                  <h3 className="font-heading text-lg sm:text-xl font-bold text-foreground">{project.title}</h3>
+                  <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-foreground/10 text-foreground font-medium">
+                    <Globe size={8} /> {project.status}
+                  </span>
+                  <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-auto" />
+                </div>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (

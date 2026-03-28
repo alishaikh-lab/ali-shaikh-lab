@@ -17,6 +17,8 @@ export const SocialLinks = () => {
 
   return (
     <section ref={ref} className="px-4 sm:px-6 md:px-12 lg:px-20 py-16 md:py-24 lg:py-32 relative">
+      <div className="liquid-blob w-80 h-80 bg-foreground/5 top-10 right-10 animate-blob" style={{ animationDelay: "6s" }} />
+
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -30,23 +32,25 @@ export const SocialLinks = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {/* List-style links for a cleaner, editorial feel */}
+        <div className="divide-y divide-border">
           {socials.map((s, i) => (
             <motion.a
               key={s.name}
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 15 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="group glass rounded-xl sm:rounded-2xl px-4 sm:px-5 py-4 sm:py-5 flex items-center justify-between hover:bg-secondary/50 transition-all duration-500"
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              whileHover={{ x: 6, transition: { duration: 0.2 } }}
+              className="group flex items-center justify-between py-4 sm:py-5 px-1"
             >
-              <div className="min-w-0">
-                <span className="font-heading font-semibold text-foreground text-sm sm:text-base block">{s.name}</span>
-                <span className="text-xs text-muted-foreground truncate block">{s.handle}</span>
+              <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                <span className="font-heading font-bold text-foreground text-base sm:text-lg">{s.name}</span>
+                <span className="text-xs sm:text-sm text-muted-foreground truncate hidden sm:block">{s.handle}</span>
               </div>
-              <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 ml-2" />
+              <ArrowUpRight size={18} className="text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0" />
             </motion.a>
           ))}
         </div>
