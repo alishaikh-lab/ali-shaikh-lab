@@ -16,7 +16,7 @@ export const SocialLinks = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="px-4 sm:px-6 md:px-12 lg:px-20 py-20 md:py-32 relative">
+    <section ref={ref} className="section-padding relative">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -24,9 +24,9 @@ export const SocialLinks = () => {
           transition={{ duration: 0.6 }}
           className="mb-10 md:mb-14"
         >
-          <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-3 block">Connect</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-[1.05] tracking-tight">
-            Find me <span className="text-gradient">everywhere</span>
+          <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-4 block">Connect</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-[2.75rem] font-heading font-bold text-foreground leading-[1.1]">
+            Find me <span className="shimmer-text">everywhere</span>
           </h2>
         </motion.div>
 
@@ -39,8 +39,9 @@ export const SocialLinks = () => {
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="group flex items-center justify-between p-4 sm:p-5 rounded-2xl border border-border hover:border-foreground/20 hover:bg-secondary/30 transition-all duration-300"
+              transition={{ duration: 0.5, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -3, transition: { duration: 0.25 } }}
+              className="group flex items-center justify-between p-4 sm:p-5 rounded-2xl border border-border/60 glass transition-all duration-300"
             >
               <div className="min-w-0">
                 <span className="block font-heading font-bold text-foreground text-sm sm:text-base">{s.name}</span>
