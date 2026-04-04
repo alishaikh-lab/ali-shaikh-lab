@@ -14,17 +14,17 @@ export const BrandValues = () => {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section ref={ref} className="px-4 sm:px-6 md:px-12 lg:px-20 py-20 md:py-32 relative">
+    <section ref={ref} className="section-padding relative">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-14 md:mb-20 max-w-xl"
+          className="mb-12 md:mb-16 max-w-xl"
         >
-          <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-3 block">Core Values</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-[1.05]">
-            What drives <span className="text-gradient">everything</span>
+          <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-4 block">Core Values</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-[2.75rem] font-heading font-bold text-foreground leading-[1.1]">
+            What drives <span className="shimmer-text">everything</span>
           </h2>
         </motion.div>
 
@@ -34,8 +34,9 @@ export const BrandValues = () => {
               key={v.title}
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group relative p-6 sm:p-7 rounded-2xl border border-border hover:border-foreground/20 hover:bg-secondary/30 transition-all duration-500"
+              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              className="group relative p-6 sm:p-7 rounded-2xl border border-border/60 glass transition-all duration-500 cursor-default"
             >
               <div className="w-11 h-11 rounded-xl bg-secondary flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-foreground group-hover:text-background transition-all duration-500">
                 <v.icon size={20} strokeWidth={1.5} />

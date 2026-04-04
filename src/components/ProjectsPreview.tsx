@@ -8,18 +8,18 @@ export const ProjectsPreview = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="px-4 sm:px-6 md:px-12 lg:px-20 py-20 md:py-32 relative">
+    <section ref={ref} className="section-padding relative">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-12 md:mb-16 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4"
+          className="mb-10 md:mb-14 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4"
         >
           <div>
-            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-3 block">Featured</span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-[1.05] tracking-tight">
-              Built & <span className="text-gradient">shipped</span>
+            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-4 block">Featured</span>
+            <h2 className="text-2xl sm:text-3xl lg:text-[2.75rem] font-heading font-bold text-foreground leading-[1.1]">
+              Built & <span className="shimmer-text">shipped</span>
             </h2>
           </div>
           <Link
@@ -30,34 +30,38 @@ export const ProjectsPreview = () => {
           </Link>
         </motion.div>
 
-        {/* Featured project — large card */}
         <motion.a
           href="https://aircle.lovable.app"
           target="_blank"
           rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="group block relative glass-strong rounded-3xl p-6 sm:p-8 md:p-10 hover:scale-[1.005] transition-transform duration-500"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          whileHover={{ y: -4, transition: { duration: 0.3 } }}
+          className="group block relative glass-strong rounded-3xl p-6 sm:p-8 md:p-10 transition-all duration-500"
         >
           <div className="flex flex-col sm:flex-row sm:items-start gap-5">
-            <div className="w-14 h-14 rounded-2xl bg-foreground text-background flex items-center justify-center flex-shrink-0 text-xl font-heading font-bold">
+            <motion.div
+              whileHover={{ rotate: [0, -5, 5, 0] }}
+              transition={{ duration: 0.5 }}
+              className="w-14 h-14 rounded-2xl bg-foreground text-background flex items-center justify-center flex-shrink-0 text-xl font-heading font-bold"
+            >
               A
-            </div>
+            </motion.div>
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-3 mb-2">
+              <div className="flex items-center gap-3 mb-2 flex-wrap">
                 <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground">Aircle</h3>
                 <span className="inline-flex items-center gap-1 text-[10px] px-2.5 py-0.5 rounded-full bg-foreground text-background font-semibold">
                   <Globe size={8} /> Live
                 </span>
-                <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-foreground transition-all ml-auto" />
+                <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-auto hidden sm:block" />
               </div>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">
+              <p className="text-sm sm:text-[15px] text-muted-foreground leading-relaxed mb-4">
                 A private room-based chat app — talk instantly without login or identity. Pure, frictionless, real-time communication.
               </p>
               <div className="flex flex-wrap gap-2">
-                {["Chat", "Privacy", "Real-time"].map((tag) => (
-                  <span key={tag} className="text-[11px] px-3 py-1 rounded-lg border border-border text-muted-foreground font-medium">
+                {["Chat", "Privacy", "Real-time", "WebSocket"].map((tag) => (
+                  <span key={tag} className="text-[11px] px-3 py-1 rounded-full border border-border/60 text-muted-foreground font-medium">
                     {tag}
                   </span>
                 ))}
