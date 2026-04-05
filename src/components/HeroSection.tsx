@@ -1,12 +1,17 @@
 import { motion } from "framer-motion";
 import { ArrowDown, MapPin, Sparkles } from "lucide-react";
-import aliImage from "@/assets/ali-shaikh.webp";
 import { Link } from "react-router-dom";
+import aliImage from "@/assets/ali-shaikh.webp";
+
+const highlights = [
+  "AI product experiments",
+  "Premium interface design",
+  "Fast execution from idea to launch",
+];
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden px-5 sm:px-6 md:px-12 lg:px-20 pt-24 pb-16 md:pt-28 md:pb-20">
-      {/* Animated liquid background */}
+    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 pt-28 pb-14 sm:pt-32 sm:pb-16 md:pt-36 md:pb-20">
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           animate={{ x: [0, 40, -20, 0], y: [0, -30, 20, 0], scale: [1, 1.15, 0.95, 1] }}
@@ -21,13 +26,12 @@ export const HeroSection = () => {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto w-full">
-        <div className="flex flex-col lg:grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
-          {/* Image */}
+        <div className="flex flex-col lg:grid lg:grid-cols-5 gap-12 lg:gap-16 xl:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.88, filter: "blur(10px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-2 flex justify-center lg:order-2"
+            className="lg:col-span-2 flex justify-center lg:justify-end lg:order-2 w-full"
           >
             <div className="relative">
               <motion.div
@@ -35,17 +39,16 @@ export const HeroSection = () => {
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 className="absolute -inset-3 rounded-[2rem] border border-dashed border-border/30"
               />
-              
+
               <div className="relative w-44 h-44 sm:w-60 sm:h-60 lg:w-72 lg:h-72 rounded-[2rem] overflow-hidden glass-strong p-1">
                 <img
                   src={aliImage}
-                  alt="Ali Shaikh — India's Youngest Digital Innovator in Tech & AI"
+                  alt="Portrait of Ali Shaikh"
                   className="w-full h-full object-cover rounded-[calc(2rem-4px)]"
                   loading="eager"
                 />
               </div>
 
-              {/* Floating badges */}
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
@@ -64,20 +67,18 @@ export const HeroSection = () => {
               >
                 <span className="flex items-center gap-1.5 text-[10px] font-semibold text-foreground">
                   <Sparkles size={10} className="text-muted-foreground" />
-                  16 y/o Builder
+                  Product builder
                 </span>
               </motion.div>
             </div>
           </motion.div>
 
-          {/* Text content */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-3 lg:order-1 text-center lg:text-left"
+            className="lg:col-span-3 lg:order-1 text-center lg:text-left w-full"
           >
-            {/* Status */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -89,17 +90,19 @@ export const HeroSection = () => {
                 transition={{ duration: 2, repeat: Infinity }}
                 className="w-1.5 h-1.5 rounded-full bg-emerald-500"
               />
-              <span className="text-[10px] sm:text-[11px] font-medium text-muted-foreground tracking-wide">Open to collaborations</span>
+              <span className="text-[10px] sm:text-[11px] font-medium text-muted-foreground tracking-wide">
+                Available for collaborations and ambitious builds
+              </span>
             </motion.div>
 
-            <h1 className="text-[2rem] leading-[1.1] sm:text-[2.75rem] lg:text-[3.5rem] xl:text-[4rem] font-heading font-bold mb-6 text-foreground">
+            <h1 className="text-[2.2rem] leading-[1.02] sm:text-[3.2rem] lg:text-[4.25rem] xl:text-[4.8rem] font-heading font-bold mb-6 text-foreground max-w-4xl mx-auto lg:mx-0">
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.7 }}
                 className="block"
               >
-                Dream it.
+                Build bold ideas
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
@@ -107,7 +110,7 @@ export const HeroSection = () => {
                 transition={{ delay: 0.35, duration: 0.7 }}
                 className="block shimmer-text"
               >
-                Build it.
+                into clean digital
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
@@ -115,38 +118,24 @@ export const HeroSection = () => {
                 transition={{ delay: 0.5, duration: 0.7 }}
                 className="block"
               >
-                Ship it.
+                products people remember.
               </motion.span>
             </h1>
 
-            {/* KEY TAGLINE */}
             <motion.div
               initial={{ opacity: 0, x: -30, filter: "blur(8px)" }}
               animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
               transition={{ delay: 0.7, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="relative mb-7 inline-block"
+              className="relative mb-7"
             >
-              <div className="relative px-4 py-3 sm:px-6 sm:py-4 rounded-2xl glass-strong overflow-hidden group">
+              <div className="relative px-4 py-4 sm:px-6 sm:py-5 rounded-[1.75rem] glass-strong overflow-hidden group max-w-2xl mx-auto lg:mx-0">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/[0.03] to-transparent"
                   animate={{ x: ["-100%", "200%"] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 3 }}
                 />
                 <p className="relative z-10 text-[13px] sm:text-sm md:text-base font-heading font-semibold text-foreground leading-relaxed">
-                  Ali Shaikh
-                  <span className="text-muted-foreground font-normal"> is </span>
-                  <span className="relative inline">
-                    <motion.span
-                      className="absolute bottom-0 left-0 right-0 h-[35%] bg-foreground/10 rounded-sm -z-[1]"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                      style={{ originX: 0 }}
-                    />
-                    India's Youngest Digital Innovator
-                  </span>
-                  <span className="text-muted-foreground font-normal"> in </span>
-                  <span className="font-bold">Tech & AI</span>
+                  Ali Shaikh designs and ships high-conviction work across product, AI, and web experiences with a focus on clarity, speed, and strong execution.
                 </p>
               </div>
             </motion.div>
@@ -155,39 +144,55 @@ export const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
-              className="text-sm sm:text-[15px] text-muted-foreground leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8"
+              className="text-sm sm:text-[15px] lg:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8"
             >
-              Turning bold ideas into real products at 16. Bridging the gap between imagination and reality — one product at a time.
+              Every section now aims to feel sharper: premium visuals, stronger messaging, and a layout that holds together just as well on mobile as it does on desktop.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 }}
+              className="grid gap-3 sm:grid-cols-3 max-w-3xl mx-auto lg:mx-0 mb-8"
+            >
+              {highlights.map((item) => (
+                <div key={item} className="glass-card px-4 py-3 text-left">
+                  <p className="text-xs sm:text-[13px] font-medium leading-relaxed text-foreground">
+                    {item}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1 }}
-              className="flex flex-wrap gap-3 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
             >
               <Link
                 to="/projects"
-                className="group inline-flex items-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 rounded-full bg-foreground text-background font-medium text-sm hover:shadow-2xl hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
+                className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3.5 sm:px-7 sm:py-3.5 rounded-full bg-foreground text-background font-medium text-sm hover:shadow-2xl hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
               >
                 View Projects
                 <motion.span
                   animate={{ x: [0, 4, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                   className="text-background/70"
-                >→</motion.span>
+                >
+                  -&gt;
+                </motion.span>
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center px-6 py-3 sm:px-7 sm:py-3.5 rounded-full border border-border/50 glass font-medium text-sm text-foreground hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
+                className="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3.5 sm:px-7 sm:py-3.5 rounded-full border border-border/50 glass font-medium text-sm text-foreground hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
               >
-                Get in Touch
+                Start a Conversation
               </Link>
             </motion.div>
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

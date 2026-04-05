@@ -2,10 +2,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const beliefs = [
-  { num: "01", title: "Build, don't talk", text: "Ideas are free. Execution is everything. Ship it or it doesn't exist." },
-  { num: "02", title: "Think in decades", text: "Build products that compound. Short-term hype fades — long-term impact stays." },
-  { num: "03", title: "Simplicity wins", text: "The best products feel invisible. Strip away the noise, keep the essence." },
-  { num: "04", title: "Learn by doing", text: "Books teach theory. Building teaches truth. Every shipped product is a lesson." },
+  { num: "01", title: "Execution over noise", text: "Strong ideas only matter when they become usable products. Shipping creates proof, momentum, and trust." },
+  { num: "02", title: "Design for clarity", text: "The best interfaces reduce friction. They feel calm, obvious, and sharp on every screen size." },
+  { num: "03", title: "Build with intent", text: "Every feature should earn its place. Simplicity is not less effort, it is more discipline." },
+  { num: "04", title: "Learn in public", text: "Every launch is feedback. Every iteration is a step toward stronger products and better judgment." },
 ];
 
 export const VisionSection = () => {
@@ -25,11 +25,11 @@ export const VisionSection = () => {
             Philosophy
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-heading font-bold text-foreground leading-[1.1]">
-            What I <span className="shimmer-text">believe in</span>
+            Principles behind the <span className="shimmer-text">work</span>
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {beliefs.map((b, i) => (
             <motion.div
               key={b.num}

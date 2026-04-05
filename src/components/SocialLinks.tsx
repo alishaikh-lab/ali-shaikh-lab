@@ -26,11 +26,11 @@ export const SocialLinks = () => {
         >
           <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-4 block">Connect</span>
           <h2 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-heading font-bold text-foreground leading-[1.1]">
-            Find me <span className="shimmer-text">everywhere</span>
+            Reach out where you are already <span className="shimmer-text">active</span>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {socials.map((s, i) => (
             <motion.a
               key={s.name}

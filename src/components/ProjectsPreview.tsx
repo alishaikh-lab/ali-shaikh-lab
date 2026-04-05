@@ -19,7 +19,7 @@ export const ProjectsPreview = () => {
           <div>
             <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-4 block">Featured</span>
             <h2 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-heading font-bold text-foreground leading-[1.1]">
-              Built & <span className="shimmer-text">shipped</span>
+              Selected work that is <span className="shimmer-text">live</span>
             </h2>
           </div>
           <Link
@@ -57,7 +57,7 @@ export const ProjectsPreview = () => {
                 <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-foreground transition-all ml-auto hidden sm:block" />
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                A private room-based chat app — talk instantly without login or identity. Pure, frictionless, real-time communication.
+                A privacy-first chat experience built for instant conversations. No heavy onboarding, no clutter, just a fast room-based flow that gets people talking immediately.
               </p>
               <div className="flex flex-wrap gap-2">
                 {["Chat", "Privacy", "Real-time", "WebSocket"].map((tag) => (

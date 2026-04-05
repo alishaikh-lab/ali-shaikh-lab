@@ -3,10 +3,10 @@ import { useRef } from "react";
 import { Target, Flame, Eye, Layers } from "lucide-react";
 
 const values = [
-  { icon: Target, title: "Purpose-Driven", text: "Every line of code serves a purpose. No fluff, no filler — only what matters." },
-  { icon: Flame, title: "Relentless Energy", text: "Age is just a number. Hunger to build, learn, and ship is what defines the pace." },
-  { icon: Eye, title: "Vision-First", text: "See what others don't. Think 10 years ahead, then work backwards to today." },
-  { icon: Layers, title: "Craft Over Hype", text: "Trends come and go. Quality craft — clean code, great design — is forever." },
+  { icon: Target, title: "Purpose-Driven", text: "Every line of code serves a purpose. No fluff, no filler, only what matters." },
+  { icon: Flame, title: "Relentless Energy", text: "The pace comes from curiosity, discipline, and the willingness to keep refining the work." },
+  { icon: Eye, title: "Vision-First", text: "See what others miss. Think long-term, then translate that direction into practical moves today." },
+  { icon: Layers, title: "Craft Over Hype", text: "Trends come and go. Quality craft, clean code, and strong design outlast hype." },
 ];
 
 export const BrandValues = () => {
@@ -28,7 +28,7 @@ export const BrandValues = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {values.map((v, i) => (
             <motion.div
               key={v.title}

@@ -7,19 +7,19 @@ const milestones = [
     year: "2024",
     icon: Rocket,
     title: "Started Building",
-    desc: "Began the journey into tech at 14 — coding, designing, and shipping ideas into reality.",
+    desc: "Began the journey into tech at 14, learning how to code, design, and turn ideas into something tangible.",
   },
   {
     year: "2025",
     icon: Zap,
     title: "Launched Aircle",
-    desc: "Shipped a privacy-first chat app — real-time communication without login or identity.",
+    desc: "Shipped a privacy-first chat app focused on real-time communication without login or identity.",
   },
   {
     year: "2025",
     icon: Globe,
     title: "Built a Brand",
-    desc: "Created a personal brand around innovation, becoming known as India's youngest digital innovator.",
+    desc: "Built a sharper digital identity around product thinking, experimentation, and consistent execution.",
   },
   {
     year: "Now",
@@ -57,7 +57,6 @@ export const SkillsSection = () => {
         </motion.div>
 
         <div className="relative">
-          {/* Vertical line */}
           <div className="absolute left-5 sm:left-8 top-0 bottom-0 w-px bg-border/60 hidden sm:block" />
 
           <div className="space-y-6 sm:space-y-8">
@@ -72,7 +71,6 @@ export const SkillsSection = () => {
                   whileHover={{ x: 6, transition: { duration: 0.25 } }}
                   className="relative flex gap-5 sm:gap-8 group"
                 >
-                  {/* Timeline dot */}
                   <div className="relative z-10 flex-shrink-0">
                     <motion.div
                       whileHover={{ scale: 1.15 }}
@@ -82,7 +80,6 @@ export const SkillsSection = () => {
                     </motion.div>
                   </div>
 
-                  {/* Content */}
                   <div className="flex-1 pb-2">
                     <span className="text-[10px] font-heading font-bold text-muted-foreground/50 tracking-[0.2em] uppercase block mb-1.5">
                       {m.year}

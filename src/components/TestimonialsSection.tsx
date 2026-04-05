@@ -4,15 +4,15 @@ import { Quote } from "lucide-react";
 
 const quotes = [
   {
-    text: "The future belongs to those who build it — not those who predict it.",
+    text: "The future belongs to the people willing to build it, refine it, and ship it.",
     source: "Ali Shaikh",
   },
   {
-    text: "Age doesn't define capability. Shipping real products does.",
+    text: "Capability is not a headline. It is the quality of work you can consistently deliver.",
     source: "Ali Shaikh",
   },
   {
-    text: "Every product I build is a conversation between a dream and reality.",
+    text: "Every product starts as an idea. The craft is turning that idea into an experience people trust.",
     source: "Ali Shaikh",
   },
 ];
@@ -59,9 +59,8 @@ export const TestimonialsSection = () => {
                 "{q.text}"
               </p>
               <span className="text-[11px] text-muted-foreground font-heading font-semibold tracking-wider uppercase">
-                — {q.source}
+                - {q.source}
               </span>
-              {/* Subtle shimmer on hover */}
               <motion.div
                 className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 animate={{ x: ["-100%", "200%"] }}

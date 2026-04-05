@@ -22,9 +22,9 @@ export const ManifestoSection = () => {
           <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-6 block">
             Manifesto
           </span>
-          
+
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-heading font-bold text-foreground leading-[1.15] mb-8">
-            I don't wait for the future.{" "}
+            I don&apos;t wait for the future.{" "}
             <motion.span
               className="relative inline-block"
               initial={{ opacity: 0 }}
@@ -48,8 +48,7 @@ export const ManifestoSection = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-sm sm:text-[15px] text-muted-foreground leading-relaxed max-w-2xl mx-auto"
           >
-            At 16, most people are figuring out what they want. I already know — I want to build products 
-            that change how people interact with technology. From Pune to the world, one product at a time.
+            The goal is simple: build products that make technology feel more useful, more elegant, and more human. Start with clarity, keep the standards high, and let the work speak.
           </motion.p>
         </motion.div>
       </div>

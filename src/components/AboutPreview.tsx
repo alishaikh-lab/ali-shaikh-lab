@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 const stats = [
   { value: "16", label: "Years old", note: "Started at 14" },
-  { value: "2+", label: "Years building", note: "Non-stop shipping" },
+  { value: "2+", label: "Years building", note: "Consistent shipping" },
   { value: "10+", label: "Products shipped", note: "From idea to live" },
-  { value: "∞", label: "Curiosity", note: "Always learning" },
+  { value: "24/7", label: "Curiosity", note: "Always learning" },
 ];
 
 export const AboutPreview = () => {
@@ -17,8 +17,7 @@ export const AboutPreview = () => {
   return (
     <section ref={ref} className="section-padding relative">
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-start">
-          {/* Left */}
+        <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-start gap-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -28,11 +27,10 @@ export const AboutPreview = () => {
               The Story
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-heading font-bold text-foreground mb-5 leading-[1.1]">
-              A 16-year-old turning{" "}
-              <span className="shimmer-text">dreams into products</span>
+              From raw ideas to <span className="shimmer-text">launch-ready products</span>
             </h2>
-            <p className="text-sm sm:text-[15px] text-muted-foreground leading-relaxed mb-6 max-w-md">
-              From Pune, India — driven by one belief: every great product starts as an idea nobody else believes in. I build those ideas into reality.
+            <p className="text-sm sm:text-[15px] text-muted-foreground leading-relaxed mb-6 max-w-xl">
+              Based in Pune, Ali approaches building with a simple filter: solve a real problem, make the experience elegant, and ship work that feels clear from the first click.
             </p>
             <Link
               to="/about"
@@ -43,8 +41,7 @@ export const AboutPreview = () => {
             </Link>
           </motion.div>
 
-          {/* Right — stat cards */}
-          <div className="mt-10 lg:mt-0 grid grid-cols-2 gap-3">
+          <div className="mt-10 lg:mt-0 grid grid-cols-1 sm:grid-cols-2 gap-3">
             {stats.map((item, i) => (
               <motion.div
                 key={item.label}

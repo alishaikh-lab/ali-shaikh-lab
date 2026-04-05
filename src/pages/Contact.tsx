@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
+import { Mail, ArrowUpRight, MessageCircle } from "lucide-react";
 import { PageTransition } from "@/components/PageTransition";
 import { Footer } from "@/components/Footer";
 import { SocialLinks } from "@/components/SocialLinks";
-import { Mail, ArrowUpRight, MessageCircle } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -24,14 +24,14 @@ const Contact = () => {
             >
               <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-3 block">Contact</span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-5 tracking-tight">
-                Let's create something <span className="shimmer-text">extraordinary</span>
+                Start the next <span className="shimmer-text">serious conversation</span>
               </h1>
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Have an idea, a collaboration in mind, or just want to connect? I'm always open to meaningful conversations.
+                If you have a product idea, a collaboration, or a challenge that needs sharp execution, this is the fastest way to connect.
               </p>
             </motion.div>
 
-            <div className="grid sm:grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               <motion.a
                 href="mailto:hello@alishaikh.dev"
                 initial={{ opacity: 0, y: 20 }}
@@ -64,7 +64,7 @@ const Contact = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h2 className="font-heading text-base font-bold text-foreground mb-0.5">Social DMs</h2>
-                    <p className="text-xs text-muted-foreground">Open on all platforms below</p>
+                    <p className="text-xs text-muted-foreground">Available across the platforms below</p>
                   </div>
                 </div>
               </motion.div>

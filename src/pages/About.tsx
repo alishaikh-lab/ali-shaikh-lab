@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
+import { MapPin, Calendar, Rocket, Code2, Lightbulb, Target } from "lucide-react";
 import { PageTransition } from "@/components/PageTransition";
 import { Footer } from "@/components/Footer";
 import aliImage from "@/assets/ali-shaikh.webp";
-import { MapPin, Calendar, Rocket, Code2, Lightbulb, Target } from "lucide-react";
 
 const highlights = [
-  { icon: Code2, label: "Focus", value: "Tech & AI" },
-  { icon: Rocket, label: "Mission", value: "Dream → Product" },
-  { icon: Lightbulb, label: "Approach", value: "Build & Ship" },
+  { icon: Code2, label: "Focus", value: "Tech and AI" },
+  { icon: Rocket, label: "Mission", value: "Idea to Product" },
+  { icon: Lightbulb, label: "Approach", value: "Build and Ship" },
   { icon: Target, label: "Mindset", value: "Think Big" },
 ];
 
@@ -30,7 +30,7 @@ const About = () => {
             >
               <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-3 block">About</span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight">
-                The mind behind <span className="shimmer-text">the vision</span>
+                The builder behind <span className="shimmer-text">the work</span>
               </h1>
             </motion.div>
 
@@ -65,16 +65,16 @@ const About = () => {
                 className="space-y-5"
               >
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  I'm <strong className="text-foreground">Ali Shaikh</strong> — a 16-year-old digital innovator from Pune, India. I believe every meaningful product begins as a wild idea, and my job is to turn that idea into something people can use and love.
+                  I&apos;m <strong className="text-foreground">Ali Shaikh</strong>, a builder from Pune, India focused on turning strong concepts into products that feel thoughtful, useful, and ready to ship.
                 </p>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  Technology isn't just a tool for me — it's a language I think in. From programming and AI to product design, I immerse myself in the craft of building things that bridge the gap between <strong className="text-foreground">dreams and reality</strong>.
+                  Technology is not just a tool here, it is the medium. From programming and AI to product thinking and interface design, every decision is shaped to make the final experience feel simpler and stronger.
                 </p>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  My approach: start with a problem worth solving, design with intention, build with precision, and ship with confidence. No shortcuts.
+                  The approach stays consistent: identify the real problem, design with intention, build with precision, and launch with confidence.
                 </p>
 
-                <div className="pt-4 grid grid-cols-2 gap-3">
+                <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {highlights.map((item, i) => {
                     const Icon = item.icon;
                     return (

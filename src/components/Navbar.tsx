@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
@@ -29,7 +29,9 @@ export const Navbar = () => {
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   return (
@@ -41,31 +43,32 @@ export const Navbar = () => {
         className="fixed top-0 left-0 right-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4"
       >
         <nav
-          className={`glass-nav rounded-[2rem] px-3 py-1.5 sm:px-5 sm:py-2 flex items-center justify-between transition-all duration-700 max-w-3xl mx-auto ${
-            scrolled ? "shadow-2xl scale-[0.97]" : ""
+          className={`glass-nav rounded-[1.6rem] md:rounded-[2rem] px-3 py-2 sm:px-4 sm:py-2.5 lg:px-5 flex items-center justify-between transition-all duration-700 max-w-5xl mx-auto ${
+            scrolled ? "shadow-2xl scale-[0.985]" : ""
           }`}
         >
-          {/* Brand */}
           <Link to="/" className="font-heading font-bold text-foreground tracking-tight flex items-center gap-2.5 min-w-0 group">
             <motion.span
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              className="w-8 h-8 rounded-xl bg-foreground text-background flex items-center justify-center text-xs font-bold flex-shrink-0 shadow-lg"
+              className="w-9 h-9 rounded-2xl bg-foreground text-background flex items-center justify-center text-xs font-bold flex-shrink-0 shadow-lg"
             >
               A
             </motion.span>
-            <span className="text-sm font-bold tracking-tight">
-              Ali Shaikh
+            <span className="min-w-0 leading-none">
+              <span className="block text-sm font-bold tracking-tight">Ali Shaikh</span>
+              <span className="hidden sm:block text-[10px] font-medium text-muted-foreground mt-1 tracking-[0.18em] uppercase">
+                Product Builder
+              </span>
             </span>
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-0.5">
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className="relative px-3.5 py-1.5 text-[12px] font-medium rounded-full transition-all duration-300 group"
+                className="relative px-4 py-2 text-[12px] font-medium rounded-full transition-all duration-300 group"
               >
                 {location.pathname === link.path && (
                   <motion.span
@@ -85,27 +88,39 @@ export const Navbar = () => {
                 </span>
               </Link>
             ))}
-            <div className="ml-1.5 pl-1.5 border-l border-border/30">
+            <div className="ml-2 pl-2 border-l border-border/30">
               <ThemeToggle />
             </div>
           </div>
 
-          {/* Mobile controls */}
-          <div className="flex md:hidden items-center gap-0.5">
+          <div className="flex md:hidden items-center gap-1">
             <ThemeToggle />
             <motion.button
-              whileTap={{ scale: 0.85 }}
+              whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-full hover:bg-secondary/60 transition-colors"
+              className="p-2.5 rounded-full hover:bg-secondary/60 transition-colors"
               aria-label="Toggle menu"
+              aria-expanded={isOpen}
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
-                  <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
                     <X size={18} />
                   </motion.div>
                 ) : (
-                  <motion.div key="m" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
                     <Menu size={18} />
                   </motion.div>
                 )}
@@ -115,72 +130,67 @@ export const Navbar = () => {
         </nav>
       </motion.header>
 
-      {/* Full-screen mobile menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
             className="fixed inset-0 z-40 md:hidden"
           >
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-background/80 backdrop-blur-3xl"
+              className="absolute inset-0 bg-background/70 backdrop-blur-2xl"
               onClick={() => setIsOpen(false)}
             />
-            
+
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, y: -12, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.98 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10 flex flex-col items-center justify-center h-full gap-2 px-8"
+              className="relative z-10 mx-3 mt-24 rounded-[2rem] glass-strong p-4 shadow-2xl"
             >
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.1 }}
-                className="text-[10px] text-muted-foreground tracking-[0.3em] uppercase font-medium mb-6"
-              >
-                Ali Shaikh
-              </motion.p>
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.path}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 15 }}
-                  transition={{ delay: i * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="w-full max-w-xs"
-                >
-                  <Link
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`block text-center py-3.5 px-6 rounded-2xl text-lg font-heading font-semibold transition-all duration-300 ${
-                      location.pathname === link.path
-                        ? "bg-foreground text-background"
-                        : "text-foreground hover:bg-secondary/50"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-              
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="mt-8 text-center"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.08 }}
+                className="px-2 pb-4"
               >
-                <p className="text-[9px] text-muted-foreground tracking-[0.2em] uppercase">
-                  India's Youngest Digital Innovator
+                <p className="text-[10px] text-muted-foreground tracking-[0.28em] uppercase font-medium mb-2">
+                  Navigation
+                </p>
+                <p className="text-sm text-foreground font-heading font-semibold">
+                  Explore the site with a layout tuned for mobile.
                 </p>
               </motion.div>
+
+              <div className="space-y-2">
+                {navLinks.map((link, i) => (
+                  <motion.div
+                    key={link.path}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 12 }}
+                    transition={{ delay: i * 0.05, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <Link
+                      to={link.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`block py-4 px-5 rounded-2xl text-base font-heading font-semibold transition-all duration-300 ${
+                        location.pathname === link.path
+                          ? "bg-foreground text-background shadow-lg"
+                          : "text-foreground hover:bg-secondary/50"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
         )}

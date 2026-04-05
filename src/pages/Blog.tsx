@@ -22,10 +22,10 @@ const Blog = () => {
             >
               <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-3 block">Blog</span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-5 tracking-tight">
-                Thoughts & <span className="shimmer-text">insights</span>
+                Notes on building, AI, and <span className="shimmer-text">product thinking</span>
               </h1>
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-10">
-                Articles on technology, AI, product building, and the journey of a young innovator. Stay tuned for deep dives and fresh perspectives.
+                Expect practical writing on design decisions, product execution, AI workflows, and the lessons behind shipping better digital work.
               </p>
               <motion.div
                 initial={{ opacity: 0, y: 10 }}

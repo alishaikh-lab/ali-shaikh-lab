@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
+import { ArrowUpRight, Globe } from "lucide-react";
 import { PageTransition } from "@/components/PageTransition";
 import { Footer } from "@/components/Footer";
-import { ArrowUpRight, Globe } from "lucide-react";
 
 const projects = [
   {
@@ -40,10 +40,10 @@ const Projects = () => {
             >
               <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-3 block">Projects</span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-5 tracking-tight">
-                Ideas turned into <span className="shimmer-text">real products</span>
+                Concepts shaped into <span className="shimmer-text">real products</span>
               </h1>
               <p className="text-sm sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
-                Every project here represents a problem worth solving. Built with care, shipped with purpose.
+                Each project is an example of focused execution: a clear problem, a simple experience, and an outcome that users can actually feel.
               </p>
             </motion.div>
 
@@ -66,16 +66,18 @@ const Projects = () => {
                       transition={{ duration: 0.5 }}
                       className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-foreground text-background flex items-center justify-center flex-shrink-0 text-lg font-heading font-bold shadow-lg"
                     >
-                      {project.title === "Aircle" ? "A" : "✦"}
+                      {project.title === "Aircle" ? "A" : "+"}
                     </motion.div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2 flex-wrap">
                         <h2 className="font-heading text-lg sm:text-xl font-bold text-foreground">{project.title}</h2>
-                        <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-semibold ${
-                          project.status === "Live"
-                            ? "bg-foreground text-background"
-                            : "border border-border text-muted-foreground"
-                        }`}>
+                        <span
+                          className={`text-[10px] px-2.5 py-0.5 rounded-full font-semibold ${
+                            project.status === "Live"
+                              ? "bg-foreground text-background"
+                              : "border border-border text-muted-foreground"
+                          }`}
+                        >
                           {project.status === "Live" && <Globe size={8} className="inline mr-1" />}
                           {project.status}
                         </span>

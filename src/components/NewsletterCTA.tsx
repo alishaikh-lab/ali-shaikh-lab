@@ -30,11 +30,10 @@ export const NewsletterCTA = () => {
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             <div className="max-w-lg">
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-heading font-bold text-foreground mb-2 leading-tight">
-                Want to build together?
+                Have a serious idea worth building?
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Whether it's a collaboration, a conversation, or just saying hello — 
-                I'm always open to connecting with people who think big.
+                Whether you need a collaborator, a fresh product perspective, or someone who can turn momentum into something visible, this is the place to start.
               </p>
             </div>
 
@@ -43,7 +42,7 @@ export const NewsletterCTA = () => {
                 to="/contact"
                 className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-medium text-sm hover:shadow-2xl hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
               >
-                Get in Touch
+                Book the Conversation
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
