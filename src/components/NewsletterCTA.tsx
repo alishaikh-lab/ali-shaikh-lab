@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const NewsletterCTA = () => {
@@ -15,42 +15,42 @@ export const NewsletterCTA = () => {
         transition={{ duration: 0.7 }}
         className="max-w-6xl mx-auto"
       >
-        <div className="relative glass-strong rounded-[2rem] p-7 sm:p-10 md:p-14 overflow-hidden">
-          <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-0 right-0 w-56 h-56 bg-foreground/5 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.3, 0.15] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute bottom-0 left-0 w-40 h-40 bg-muted-foreground/5 rounded-full blur-3xl"
-          />
-
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-            <div className="max-w-lg">
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-heading font-bold text-foreground mb-2 leading-tight">
-                Have a serious idea worth building?
+        <div className="section-panel panel-noise overflow-hidden p-7 sm:p-10 md:p-14">
+          <div className="relative z-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+            <div>
+              <span className="eyebrow mb-5">
+                <Sparkles size={12} className="text-[hsl(var(--highlight))]" />
+                Final Call To Action
+              </span>
+              <h2 className="max-w-3xl text-2xl sm:text-3xl lg:text-[3.1rem] font-heading font-bold tracking-[-0.04em] text-foreground leading-[1.02]">
+                Want the next version of your brand or product to feel <span className="shimmer-text">this considered</span>?
               </h2>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Whether you need a collaborator, a fresh product perspective, or someone who can turn momentum into something visible, this is the place to start.
+              <p className="mt-5 max-w-2xl text-sm sm:text-[15px] leading-relaxed text-muted-foreground">
+                From structure and positioning to visual polish and conversion-focused UX, this is where better digital presence begins. If the work needs to feel sharper, cleaner, and more confident, let&apos;s build it properly.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                to="/contact"
-                className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-medium text-sm hover:shadow-2xl hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
-              >
-                Book the Conversation
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                to="/projects"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-border/50 glass font-medium text-sm text-foreground hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
-              >
-                See My Work
-              </Link>
+            <div className="grid gap-4">
+              <div className="glass-card p-5">
+                <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">Best for</p>
+                <p className="mt-3 text-lg font-heading font-bold text-foreground">Personal brands, product pages, and modern portfolio experiences</p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  to="/contact"
+                  className="group inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_rgba(15,23,42,0.18)]"
+                >
+                  Start the Conversation
+                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  to="/projects"
+                  className="inline-flex flex-1 items-center justify-center rounded-full glass px-6 py-3.5 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  Review the Work
+                </Link>
+              </div>
             </div>
           </div>
         </div>

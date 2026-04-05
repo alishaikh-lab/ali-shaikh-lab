@@ -3,6 +3,12 @@ import { useRef } from "react";
 import { ArrowUpRight, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 
+const projectStats = [
+  { label: "Experience", value: "Instant room flow" },
+  { label: "Positioning", value: "Privacy-first" },
+  { label: "Focus", value: "Zero clutter UX" },
+];
+
 export const ProjectsPreview = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -14,19 +20,23 @@ export const ProjectsPreview = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-10 md:mb-14 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4"
+          className="mb-10 md:mb-14 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
         >
-          <div>
-            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-4 block">Featured</span>
-            <h2 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-heading font-bold text-foreground leading-[1.1]">
-              Selected work that is <span className="shimmer-text">live</span>
+          <div className="max-w-2xl">
+            <span className="eyebrow mb-5">
+              <span className="inline-flex h-2 w-2 rounded-full bg-[hsl(var(--highlight))]" />
+              Featured Project
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-[2.8rem] font-heading font-bold tracking-[-0.04em] text-foreground leading-[1.02]">
+              A live product shaped with <span className="shimmer-text">clarity and restraint</span>
             </h2>
           </div>
           <Link
             to="/projects"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 group"
+            className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
-            All projects <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            View all projects
+            <ArrowUpRight size={14} />
           </Link>
         </motion.div>
 
@@ -37,35 +47,52 @@ export const ProjectsPreview = () => {
           initial={{ opacity: 0, y: 25 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
-          whileHover={{ y: -4, transition: { duration: 0.3 } }}
-          className="group block glass-card rounded-2xl p-5 sm:p-8 md:p-10"
+          className="section-panel panel-noise block overflow-hidden p-5 sm:p-6 md:p-8"
         >
-          <div className="flex flex-col sm:flex-row sm:items-start gap-5">
-            <motion.div
-              whileHover={{ rotate: [0, -5, 5, 0] }}
-              transition={{ duration: 0.5 }}
-              className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-foreground text-background flex items-center justify-center flex-shrink-0 text-xl font-heading font-bold shadow-lg"
-            >
-              A
-            </motion.div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-3 mb-2 flex-wrap">
-                <h3 className="font-heading text-lg sm:text-xl font-bold text-foreground">Aircle</h3>
-                <span className="inline-flex items-center gap-1 text-[10px] px-2.5 py-0.5 rounded-full bg-foreground text-background font-semibold">
-                  <Globe size={8} /> Live
+          <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="glass-card p-6 sm:p-8">
+              <div className="flex items-center gap-3 flex-wrap">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-foreground text-xl font-heading font-bold text-background shadow-lg">
+                  A
+                </div>
+                <div>
+                  <h3 className="font-heading text-2xl font-bold tracking-[-0.03em] text-foreground">Aircle</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">Conversation design with speed, privacy, and low friction.</p>
+                </div>
+                <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-foreground px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-background">
+                  <Globe size={10} />
+                  Live
                 </span>
-                <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-foreground transition-all ml-auto hidden sm:block" />
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                A privacy-first chat experience built for instant conversations. No heavy onboarding, no clutter, just a fast room-based flow that gets people talking immediately.
+
+              <p className="mt-6 max-w-2xl text-sm sm:text-[15px] leading-relaxed text-muted-foreground">
+                Aircle is a privacy-first chat product built around one simple UX principle: remove everything that slows people down. The result is a direct, room-based experience that feels immediate and calm instead of busy.
               </p>
-              <div className="flex flex-wrap gap-2">
-                {["Chat", "Privacy", "Real-time", "WebSocket"].map((tag) => (
-                  <span key={tag} className="text-[11px] px-3 py-1 rounded-full border border-border/50 text-muted-foreground font-medium">
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {["Chat", "Privacy", "Realtime", "Product UX"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-[hsl(var(--foreground)/0.08)] bg-background/72 px-3 py-1.5 text-[11px] font-medium text-muted-foreground"
+                  >
                     {tag}
                   </span>
                 ))}
               </div>
+
+              <div className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                Visit the live project
+                <ArrowUpRight size={15} />
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+              {projectStats.map((stat) => (
+                <div key={stat.label} className="glass-card p-5">
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">{stat.label}</p>
+                  <p className="mt-3 text-lg font-heading font-bold leading-tight text-foreground">{stat.value}</p>
+                </div>
+              ))}
             </div>
           </div>
         </motion.a>

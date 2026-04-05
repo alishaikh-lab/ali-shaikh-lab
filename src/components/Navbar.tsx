@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { ThemeToggle } from "./ThemeToggle";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -40,65 +40,72 @@ export const Navbar = () => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4"
+        className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4"
       >
         <nav
-          className={`glass-nav rounded-[1.6rem] md:rounded-[2rem] px-3 py-2 sm:px-4 sm:py-2.5 lg:px-5 flex items-center justify-between transition-all duration-700 max-w-5xl mx-auto ${
-            scrolled ? "shadow-2xl scale-[0.985]" : ""
+          className={`glass-nav mx-auto flex max-w-6xl items-center justify-between rounded-[1.75rem] px-3 py-2.5 sm:px-4 lg:px-5 transition-all duration-700 ${
+            scrolled ? "translate-y-0 shadow-[0_22px_60px_rgba(15,23,42,0.14)]" : ""
           }`}
         >
-          <Link to="/" className="font-heading font-bold text-foreground tracking-tight flex items-center gap-2.5 min-w-0 group">
+          <Link to="/" className="group flex min-w-0 items-center gap-3 text-foreground">
             <motion.span
-              whileHover={{ scale: 1.08 }}
+              whileHover={{ rotate: -8, scale: 1.06 }}
               whileTap={{ scale: 0.95 }}
-              className="w-9 h-9 rounded-2xl bg-foreground text-background flex items-center justify-center text-xs font-bold flex-shrink-0 shadow-lg"
+              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-2xl bg-foreground text-xs font-bold text-background shadow-lg"
             >
               A
             </motion.span>
             <span className="min-w-0 leading-none">
-              <span className="block text-sm font-bold tracking-tight">Ali Shaikh</span>
-              <span className="hidden sm:block text-[10px] font-medium text-muted-foreground mt-1 tracking-[0.18em] uppercase">
-                Product Builder
+              <span className="block font-heading text-sm font-bold tracking-tight">Ali Shaikh</span>
+              <span className="hidden sm:block mt-1 text-[10px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
+                Design x Product x AI
               </span>
             </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="relative px-4 py-2 text-[12px] font-medium rounded-full transition-all duration-300 group"
-              >
-                {location.pathname === link.path && (
-                  <motion.span
-                    layoutId="nav-pill"
-                    className="absolute inset-0 bg-foreground rounded-full shadow-lg"
-                    transition={{ type: "spring", stiffness: 500, damping: 35 }}
-                  />
-                )}
-                <span
-                  className={`relative z-10 transition-colors duration-300 ${
-                    location.pathname === link.path
-                      ? "text-background"
-                      : "text-muted-foreground group-hover:text-foreground"
-                  }`}
+            <div className="flex items-center gap-1 rounded-full bg-background/60 px-2 py-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="relative rounded-full px-4 py-2 text-[12px] font-medium transition-all duration-300"
                 >
-                  {link.label}
-                </span>
-              </Link>
-            ))}
-            <div className="ml-2 pl-2 border-l border-border/30">
+                  {location.pathname === link.path && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 rounded-full bg-foreground shadow-lg"
+                      transition={{ type: "spring", stiffness: 500, damping: 36 }}
+                    />
+                  )}
+                  <span
+                    className={`relative z-10 transition-colors duration-300 ${
+                      location.pathname === link.path ? "text-background" : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {link.label}
+                  </span>
+                </Link>
+              ))}
+            </div>
+
+            <div className="ml-2 flex items-center gap-2">
               <ThemeToggle />
+              <Link
+                to="/contact"
+                className="inline-flex items-center rounded-full bg-foreground px-4 py-2 text-[12px] font-medium text-background transition-transform duration-300 hover:-translate-y-0.5"
+              >
+                Let&apos;s Talk
+              </Link>
             </div>
           </div>
 
-          <div className="flex md:hidden items-center gap-1">
+          <div className="flex items-center gap-1 md:hidden">
             <ThemeToggle />
             <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2.5 rounded-full hover:bg-secondary/60 transition-colors"
+              whileTap={{ scale: 0.92 }}
+              onClick={() => setIsOpen((open) => !open)}
+              className="rounded-full bg-background/70 p-2.5 text-foreground transition-colors hover:bg-secondary/70"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
@@ -143,7 +150,7 @@ export const Navbar = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-background/70 backdrop-blur-2xl"
+              className="absolute inset-0 bg-background/78 backdrop-blur-2xl"
               onClick={() => setIsOpen(false)}
             />
 
@@ -154,36 +161,29 @@ export const Navbar = () => {
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="relative z-10 mx-3 mt-24 rounded-[2rem] glass-strong p-4 shadow-2xl"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.08 }}
-                className="px-2 pb-4"
-              >
-                <p className="text-[10px] text-muted-foreground tracking-[0.28em] uppercase font-medium mb-2">
-                  Navigation
+              <div className="px-2 pb-4">
+                <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-muted-foreground">Navigation</p>
+                <p className="mt-2 text-sm font-heading font-semibold text-foreground">
+                  Move through the site with a cleaner mobile flow.
                 </p>
-                <p className="text-sm text-foreground font-heading font-semibold">
-                  Explore the site with a layout tuned for mobile.
-                </p>
-              </motion.div>
+              </div>
 
               <div className="space-y-2">
                 {navLinks.map((link, i) => (
                   <motion.div
                     key={link.path}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 12 }}
-                    transition={{ delay: i * 0.05, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ delay: i * 0.05, duration: 0.28 }}
                   >
                     <Link
                       to={link.path}
                       onClick={() => setIsOpen(false)}
-                      className={`block py-4 px-5 rounded-2xl text-base font-heading font-semibold transition-all duration-300 ${
+                      className={`block rounded-2xl px-5 py-4 text-base font-heading font-semibold transition-all duration-300 ${
                         location.pathname === link.path
                           ? "bg-foreground text-background shadow-lg"
-                          : "text-foreground hover:bg-secondary/50"
+                          : "bg-background/45 text-foreground"
                       }`}
                     >
                       {link.label}
@@ -191,6 +191,14 @@ export const Navbar = () => {
                   </motion.div>
                 ))}
               </div>
+
+              <Link
+                to="/contact"
+                onClick={() => setIsOpen(false)}
+                className="mt-4 inline-flex w-full items-center justify-center rounded-2xl bg-[hsl(var(--highlight))] px-5 py-4 text-sm font-medium text-white shadow-lg"
+              >
+                Start a Project
+              </Link>
             </motion.div>
           </motion.div>
         )}

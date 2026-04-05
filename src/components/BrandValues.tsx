@@ -1,12 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Target, Flame, Eye, Layers } from "lucide-react";
+import { Eye, Flame, Layers, Target } from "lucide-react";
 
 const values = [
-  { icon: Target, title: "Purpose-Driven", text: "Every line of code serves a purpose. No fluff, no filler, only what matters." },
-  { icon: Flame, title: "Relentless Energy", text: "The pace comes from curiosity, discipline, and the willingness to keep refining the work." },
-  { icon: Eye, title: "Vision-First", text: "See what others miss. Think long-term, then translate that direction into practical moves today." },
-  { icon: Layers, title: "Craft Over Hype", text: "Trends come and go. Quality craft, clean code, and strong design outlast hype." },
+  { icon: Target, title: "Purpose-Driven", text: "Every decision should push the experience forward. No filler, no clutter, no wasted attention." },
+  { icon: Flame, title: "High Momentum", text: "The work moves fast, but never casually. Speed only matters when quality keeps up." },
+  { icon: Eye, title: "Taste Matters", text: "Strong products do not just work, they feel composed, confident, and memorable." },
+  { icon: Layers, title: "Systems First", text: "Better spacing, better hierarchy, and better consistency create better trust." },
 ];
 
 export const BrandValues = () => {
@@ -20,29 +20,37 @@ export const BrandValues = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-12 md:mb-16 max-w-xl"
+          className="mb-12 md:mb-16 max-w-2xl"
         >
-          <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-4 block">Core Values</span>
-          <h2 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-heading font-bold text-foreground leading-[1.1]">
-            What drives <span className="shimmer-text">everything</span>
+          <span className="eyebrow mb-5">
+            <span className="inline-flex h-2 w-2 rounded-full bg-[hsl(var(--highlight-soft))]" />
+            Core Values
+          </span>
+          <h2 className="text-2xl sm:text-3xl lg:text-[2.8rem] font-heading font-bold text-foreground leading-[1.02] tracking-[-0.04em]">
+            The design decisions behind the <span className="shimmer-text">experience</span>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {values.map((v, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {values.map((value, i) => (
             <motion.div
-              key={v.title}
+              key={value.title}
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
-              className="group relative p-5 sm:p-6 rounded-2xl glass-card cursor-default"
+              className="glass-card group relative overflow-hidden p-6 sm:p-7"
             >
-              <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-foreground group-hover:text-background transition-all duration-500">
-                <v.icon size={18} strokeWidth={1.5} />
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--highlight)/0.5)] to-transparent opacity-70" />
+              <div className="mb-5 flex items-center justify-between">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsl(var(--foreground))] text-background shadow-lg transition-transform duration-500 group-hover:scale-105">
+                  <value.icon size={18} strokeWidth={1.7} />
+                </div>
+                <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
+                  0{i + 1}
+                </span>
               </div>
-              <h3 className="font-heading font-bold text-foreground text-sm sm:text-base mb-1.5">{v.title}</h3>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{v.text}</p>
+              <h3 className="font-heading text-lg font-bold text-foreground">{value.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{value.text}</p>
             </motion.div>
           ))}
         </div>

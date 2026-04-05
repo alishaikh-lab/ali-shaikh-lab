@@ -23,25 +23,22 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggle}
-      className="relative w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-accent transition-colors"
+      className="glass relative flex h-10 w-[74px] items-center rounded-full px-1.5"
       aria-label="Toggle dark mode"
     >
       <motion.div
         initial={false}
-        animate={{ rotate: isDark ? 180 : 0, scale: isDark ? 0 : 1 }}
-        transition={{ duration: 0.3 }}
-        className="absolute"
+        animate={{ x: isDark ? 33 : 0 }}
+        transition={{ type: "spring", stiffness: 340, damping: 24 }}
+        className="absolute left-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-background shadow-lg"
       >
-        <Sun size={16} className="text-foreground" />
+        {isDark ? <Moon size={14} /> : <Sun size={14} />}
       </motion.div>
-      <motion.div
-        initial={false}
-        animate={{ rotate: isDark ? 0 : -180, scale: isDark ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-        className="absolute"
-      >
-        <Moon size={16} className="text-foreground" />
-      </motion.div>
+
+      <div className="flex w-full items-center justify-between px-2 text-muted-foreground">
+        <Sun size={13} className={isDark ? "opacity-45" : "opacity-100"} />
+        <Moon size={13} className={isDark ? "opacity-100" : "opacity-45"} />
+      </div>
     </button>
   );
 };
