@@ -170,3 +170,15 @@ html {
   background: hsl(var(--foreground));
   color: hsl(var(--background));
 }
+
+/* 🔥 REMOVE LOVABLE BADGE COMPLETELY */
+#lovable-badge,
+.lovable-badge,
+iframe[src*="lovable"],
+a[href*="lovable"],
+div[style*="position: fixed"] a[href*="lovable"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
