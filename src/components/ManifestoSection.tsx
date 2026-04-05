@@ -10,7 +10,7 @@ export const ManifestoSection = () => {
       <motion.div
         animate={{ x: [0, 20, -15, 0], y: [0, -15, 10, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        className="liquid-blob w-[400px] h-[400px] bg-foreground/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="liquid-blob w-[350px] h-[350px] bg-foreground/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       />
 
       <div className="max-w-4xl mx-auto relative z-10 text-center">
@@ -23,7 +23,7 @@ export const ManifestoSection = () => {
             Manifesto
           </span>
           
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] font-heading font-bold text-foreground leading-[1.15] mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-heading font-bold text-foreground leading-[1.15] mb-8">
             I don't wait for the future.{" "}
             <motion.span
               className="relative inline-block"
@@ -46,7 +46,7 @@ export const ManifestoSection = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-sm sm:text-[15px] md:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto"
+            className="text-sm sm:text-[15px] text-muted-foreground leading-relaxed max-w-2xl mx-auto"
           >
             At 16, most people are figuring out what they want. I already know — I want to build products 
             that change how people interact with technology. From Pune to the world, one product at a time.

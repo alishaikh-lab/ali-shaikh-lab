@@ -23,26 +23,26 @@ export const BrandValues = () => {
           className="mb-12 md:mb-16 max-w-xl"
         >
           <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-4 block">Core Values</span>
-          <h2 className="text-2xl sm:text-3xl lg:text-[2.75rem] font-heading font-bold text-foreground leading-[1.1]">
+          <h2 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-heading font-bold text-foreground leading-[1.1]">
             What drives <span className="shimmer-text">everything</span>
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {values.map((v, i) => (
             <motion.div
               key={v.title}
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              className="group relative p-6 sm:p-7 rounded-2xl border border-border/60 glass transition-all duration-500 cursor-default"
+              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              className="group relative p-5 sm:p-6 rounded-2xl glass-card cursor-default"
             >
-              <div className="w-11 h-11 rounded-xl bg-secondary flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-foreground group-hover:text-background transition-all duration-500">
-                <v.icon size={20} strokeWidth={1.5} />
+              <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-foreground group-hover:text-background transition-all duration-500">
+                <v.icon size={18} strokeWidth={1.5} />
               </div>
-              <h3 className="font-heading font-bold text-foreground text-base mb-2">{v.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{v.text}</p>
+              <h3 className="font-heading font-bold text-foreground text-sm sm:text-base mb-1.5">{v.title}</h3>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{v.text}</p>
             </motion.div>
           ))}
         </div>
