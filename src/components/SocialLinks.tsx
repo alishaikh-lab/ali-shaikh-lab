@@ -25,12 +25,12 @@ export const SocialLinks = () => {
           className="mb-10 md:mb-14"
         >
           <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-4 block">Connect</span>
-          <h2 className="text-2xl sm:text-3xl lg:text-[2.75rem] font-heading font-bold text-foreground leading-[1.1]">
+          <h2 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-heading font-bold text-foreground leading-[1.1]">
             Find me <span className="shimmer-text">everywhere</span>
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
           {socials.map((s, i) => (
             <motion.a
               key={s.name}
@@ -41,13 +41,13 @@ export const SocialLinks = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -3, transition: { duration: 0.25 } }}
-              className="group flex items-center justify-between p-4 sm:p-5 rounded-2xl border border-border/60 glass transition-all duration-300"
+              className="group flex items-center justify-between p-4 rounded-2xl glass-card"
             >
               <div className="min-w-0">
-                <span className="block font-heading font-bold text-foreground text-sm sm:text-base">{s.name}</span>
-                <span className="block text-xs text-muted-foreground mt-0.5 truncate">{s.handle}</span>
+                <span className="block font-heading font-bold text-foreground text-sm">{s.name}</span>
+                <span className="block text-[11px] text-muted-foreground mt-0.5 truncate">{s.handle}</span>
               </div>
-              <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 ml-3" />
+              <ArrowUpRight size={15} className="text-muted-foreground group-hover:text-foreground transition-all flex-shrink-0 ml-2" />
             </motion.a>
           ))}
         </div>

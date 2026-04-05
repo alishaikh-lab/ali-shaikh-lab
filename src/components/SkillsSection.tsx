@@ -1,54 +1,37 @@
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
-import { Code2, Palette, Wrench, Brain } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Rocket, Zap, Globe, TrendingUp } from "lucide-react";
 
-const categories = [
+const milestones = [
   {
-    title: "Languages",
-    icon: Code2,
-    skills: [
-      { name: "JavaScript", level: 90 },
-      { name: "TypeScript", level: 85 },
-      { name: "Python", level: 80 },
-      { name: "HTML/CSS", level: 95 },
-    ],
+    year: "2024",
+    icon: Rocket,
+    title: "Started Building",
+    desc: "Began the journey into tech at 14 — coding, designing, and shipping ideas into reality.",
   },
   {
-    title: "Frameworks",
-    icon: Palette,
-    skills: [
-      { name: "React", level: 90 },
-      { name: "Next.js", level: 85 },
-      { name: "Node.js", level: 80 },
-      { name: "Tailwind CSS", level: 95 },
-    ],
+    year: "2025",
+    icon: Zap,
+    title: "Launched Aircle",
+    desc: "Shipped a privacy-first chat app — real-time communication without login or identity.",
   },
   {
-    title: "Tools",
-    icon: Wrench,
-    skills: [
-      { name: "Git & GitHub", level: 90 },
-      { name: "Figma", level: 85 },
-      { name: "Supabase", level: 80 },
-      { name: "Vercel", level: 85 },
-    ],
+    year: "2025",
+    icon: Globe,
+    title: "Built a Brand",
+    desc: "Created a personal brand around innovation, becoming known as India's youngest digital innovator.",
   },
   {
-    title: "AI & ML",
-    icon: Brain,
-    skills: [
-      { name: "Prompt Engineering", level: 90 },
-      { name: "AI Integration", level: 85 },
-      { name: "ChatGPT API", level: 80 },
-      { name: "AI Workflows", level: 75 },
-    ],
+    year: "Now",
+    icon: TrendingUp,
+    title: "Scaling Up",
+    desc: "Working on AI-powered products and expanding into new markets. The best is yet to come.",
   },
 ];
 
 export const SkillsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
-  const [active, setActive] = useState(0);
 
   return (
     <section ref={ref} className="section-padding relative overflow-hidden">
@@ -63,81 +46,55 @@ export const SkillsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-10 md:mb-14"
+          className="mb-12 md:mb-16"
         >
           <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-4 block">
-            Capabilities
+            Journey
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-[2.75rem] font-heading font-bold text-foreground leading-[1.1]">
-            Tools of the <span className="shimmer-text">trade</span>
+            Building the <span className="shimmer-text">path forward</span>
           </h2>
         </motion.div>
 
-        {/* Category tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-wrap gap-2 mb-8"
-        >
-          {categories.map((cat, i) => {
-            const Icon = cat.icon;
-            return (
-              <button
-                key={cat.title}
-                onClick={() => setActive(i)}
-                className={`relative flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                  active === i ? "text-background" : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {active === i && (
-                  <motion.span
-                    layoutId="skill-tab-pill"
-                    className="absolute inset-0 bg-foreground rounded-full"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
-                <Icon size={15} className="relative z-10" />
-                <span className="relative z-10 hidden sm:inline">{cat.title}</span>
-              </button>
-            );
-          })}
-        </motion.div>
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-5 sm:left-8 top-0 bottom-0 w-px bg-border/60 hidden sm:block" />
 
-        {/* Skills with progress bars */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.35 }}
-            className="grid sm:grid-cols-2 gap-4"
-          >
-            {categories[active].skills.map((skill, i) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, x: -15 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="p-4 sm:p-5 rounded-2xl border border-border/60 glass group hover:border-foreground/15 transition-all duration-300"
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-medium text-foreground">{skill.name}</span>
-                  <span className="text-xs text-muted-foreground font-heading">{skill.level}%</span>
-                </div>
-                <div className="h-1.5 rounded-full bg-secondary overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${skill.level}%` }}
-                    transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                    className="h-full rounded-full bg-foreground"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+          <div className="space-y-6 sm:space-y-8">
+            {milestones.map((m, i) => {
+              const Icon = m.icon;
+              return (
+                <motion.div
+                  key={m.title}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.6, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ x: 6, transition: { duration: 0.25 } }}
+                  className="relative flex gap-5 sm:gap-8 group"
+                >
+                  {/* Timeline dot */}
+                  <div className="relative z-10 flex-shrink-0">
+                    <motion.div
+                      whileHover={{ scale: 1.15 }}
+                      className="w-10 h-10 sm:w-16 sm:h-16 rounded-2xl glass-strong flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-500 shadow-lg"
+                    >
+                      <Icon size={18} strokeWidth={1.5} />
+                    </motion.div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 pb-2">
+                    <span className="text-[10px] font-heading font-bold text-muted-foreground/50 tracking-[0.2em] uppercase block mb-1.5">
+                      {m.year}
+                    </span>
+                    <h3 className="font-heading text-base sm:text-lg font-bold text-foreground mb-1.5">{m.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed max-w-md">{m.desc}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );

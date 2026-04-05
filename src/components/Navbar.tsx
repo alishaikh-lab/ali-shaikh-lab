@@ -41,20 +41,22 @@ export const Navbar = () => {
         className="fixed top-0 left-0 right-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4"
       >
         <nav
-          className={`glass rounded-full px-4 py-2 sm:px-6 sm:py-2.5 flex items-center justify-between transition-all duration-700 max-w-4xl mx-auto ${
-            scrolled ? "shadow-2xl scale-[0.98]" : ""
+          className={`glass-nav rounded-[2rem] px-3 py-1.5 sm:px-5 sm:py-2 flex items-center justify-between transition-all duration-700 max-w-3xl mx-auto ${
+            scrolled ? "shadow-2xl scale-[0.97]" : ""
           }`}
         >
-          {/* Logo */}
-          <Link to="/" className="font-heading font-bold text-sm sm:text-base text-foreground tracking-tight flex items-center gap-2 min-w-0">
+          {/* Brand */}
+          <Link to="/" className="font-heading font-bold text-foreground tracking-tight flex items-center gap-2.5 min-w-0 group">
             <motion.span
-              whileHover={{ rotate: [0, -10, 10, 0] }}
-              transition={{ duration: 0.5 }}
-              className="w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center text-xs font-bold flex-shrink-0"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-8 h-8 rounded-xl bg-foreground text-background flex items-center justify-center text-xs font-bold flex-shrink-0 shadow-lg"
             >
               A
             </motion.span>
-            <span className="hidden sm:inline truncate">Ali Shaikh</span>
+            <span className="text-sm font-bold tracking-tight">
+              Ali Shaikh
+            </span>
           </Link>
 
           {/* Desktop nav */}
@@ -63,13 +65,13 @@ export const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className="relative px-4 py-2 text-[13px] font-medium rounded-full transition-all duration-300 group"
+                className="relative px-3.5 py-1.5 text-[12px] font-medium rounded-full transition-all duration-300 group"
               >
                 {location.pathname === link.path && (
                   <motion.span
                     layoutId="nav-pill"
-                    className="absolute inset-0 bg-foreground rounded-full"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    className="absolute inset-0 bg-foreground rounded-full shadow-lg"
+                    transition={{ type: "spring", stiffness: 500, damping: 35 }}
                   />
                 )}
                 <span
@@ -83,18 +85,18 @@ export const Navbar = () => {
                 </span>
               </Link>
             ))}
-            <div className="ml-2 pl-2 border-l border-border/50">
+            <div className="ml-1.5 pl-1.5 border-l border-border/30">
               <ThemeToggle />
             </div>
           </div>
 
           {/* Mobile controls */}
-          <div className="flex md:hidden items-center gap-1">
+          <div className="flex md:hidden items-center gap-0.5">
             <ThemeToggle />
             <motion.button
               whileTap={{ scale: 0.85 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2.5 rounded-full hover:bg-secondary/60 transition-colors"
+              className="p-2 rounded-full hover:bg-secondary/60 transition-colors"
               aria-label="Toggle menu"
             >
               <AnimatePresence mode="wait">
@@ -127,7 +129,7 @@ export const Navbar = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-background/90 backdrop-blur-2xl"
+              className="absolute inset-0 bg-background/80 backdrop-blur-3xl"
               onClick={() => setIsOpen(false)}
             />
             
@@ -136,8 +138,16 @@ export const Navbar = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10 flex flex-col items-center justify-center h-full gap-1 px-8"
+              className="relative z-10 flex flex-col items-center justify-center h-full gap-2 px-8"
             >
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                className="text-[10px] text-muted-foreground tracking-[0.3em] uppercase font-medium mb-6"
+              >
+                Ali Shaikh
+              </motion.p>
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.path}
@@ -150,7 +160,7 @@ export const Navbar = () => {
                   <Link
                     to={link.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block text-center py-4 px-6 rounded-2xl text-xl font-heading font-semibold transition-all duration-300 ${
+                    className={`block text-center py-3.5 px-6 rounded-2xl text-lg font-heading font-semibold transition-all duration-300 ${
                       location.pathname === link.path
                         ? "bg-foreground text-background"
                         : "text-foreground hover:bg-secondary/50"
@@ -165,10 +175,10 @@ export const Navbar = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="mt-10 text-center"
+                className="mt-8 text-center"
               >
-                <p className="text-[10px] text-muted-foreground tracking-[0.3em] uppercase font-medium">
-                  Digital Innovator · Builder
+                <p className="text-[9px] text-muted-foreground tracking-[0.2em] uppercase">
+                  India's Youngest Digital Innovator
                 </p>
               </motion.div>
             </motion.div>

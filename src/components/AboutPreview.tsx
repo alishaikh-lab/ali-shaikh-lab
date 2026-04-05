@@ -17,7 +17,7 @@ export const AboutPreview = () => {
   return (
     <section ref={ref} className="section-padding relative">
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-20 items-start">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-start">
           {/* Left */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -27,7 +27,7 @@ export const AboutPreview = () => {
             <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-4 block">
               The Story
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-[2.75rem] font-heading font-bold text-foreground mb-5 leading-[1.1]">
+            <h2 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-heading font-bold text-foreground mb-5 leading-[1.1]">
               A 16-year-old turning{" "}
               <span className="shimmer-text">dreams into products</span>
             </h2>
@@ -52,7 +52,7 @@ export const AboutPreview = () => {
                 animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
                 transition={{ duration: 0.6, delay: 0.15 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -4, transition: { duration: 0.3 } }}
-                className="p-5 sm:p-6 rounded-2xl border border-border/60 glass group cursor-default"
+                className="p-5 rounded-2xl glass-card group cursor-default"
               >
                 <span className="block font-heading text-2xl sm:text-3xl font-bold text-foreground mb-1 group-hover:scale-105 transition-transform duration-300 origin-left">
                   {item.value}

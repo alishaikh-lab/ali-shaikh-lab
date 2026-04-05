@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { PageTransition } from "@/components/PageTransition";
 import { Footer } from "@/components/Footer";
-import { ArrowUpRight, Globe, Layers } from "lucide-react";
+import { ArrowUpRight, Globe } from "lucide-react";
 
 const projects = [
   {
@@ -24,26 +24,30 @@ const Projects = () => {
   return (
     <PageTransition>
       <main>
-        <section className="px-4 sm:px-6 md:px-12 lg:px-20 py-20 md:py-28 pt-32 relative">
-          <div className="liquid-blob w-80 h-80 bg-foreground/5 top-10 -left-10 animate-blob" />
+        <section className="px-4 sm:px-6 md:px-12 lg:px-20 py-20 md:py-28 pt-28 sm:pt-32 relative">
+          <motion.div
+            animate={{ x: [0, 20, -15, 0], y: [0, -15, 10, 0] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="liquid-blob w-80 h-80 bg-foreground/5 top-10 -left-10"
+          />
 
           <div className="max-w-6xl mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-14 md:mb-16"
+              className="mb-12 md:mb-16"
             >
               <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-3 block">Projects</span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-foreground mb-5 tracking-tight">
-                Ideas turned into <span className="text-gradient">real products</span>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-5 tracking-tight">
+                Ideas turned into <span className="shimmer-text">real products</span>
               </h1>
-              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
+              <p className="text-sm sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
                 Every project here represents a problem worth solving. Built with care, shipped with purpose.
               </p>
             </motion.div>
 
-            <div className="grid gap-4 sm:gap-5">
+            <div className="grid gap-4">
               {projects.map((project, i) => (
                 <motion.a
                   key={project.title}
@@ -53,30 +57,36 @@ const Projects = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="group block p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-border hover:border-foreground/20 hover:bg-secondary/20 transition-all duration-500"
+                  whileHover={{ y: -4, transition: { duration: 0.3 } }}
+                  className="group block p-5 sm:p-8 rounded-2xl glass-card"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start gap-5">
-                    <div className="w-14 h-14 rounded-2xl bg-foreground text-background flex items-center justify-center flex-shrink-0 text-lg font-heading font-bold">
+                    <motion.div
+                      whileHover={{ rotate: [0, -5, 5, 0] }}
+                      transition={{ duration: 0.5 }}
+                      className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-foreground text-background flex items-center justify-center flex-shrink-0 text-lg font-heading font-bold shadow-lg"
+                    >
                       {project.title === "Aircle" ? "A" : "✦"}
-                    </div>
+                    </motion.div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground">{project.title}</h2>
+                      <div className="flex items-center gap-3 mb-2 flex-wrap">
+                        <h2 className="font-heading text-lg sm:text-xl font-bold text-foreground">{project.title}</h2>
                         <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-semibold ${
                           project.status === "Live"
                             ? "bg-foreground text-background"
                             : "border border-border text-muted-foreground"
                         }`}>
+                          {project.status === "Live" && <Globe size={8} className="inline mr-1" />}
                           {project.status}
                         </span>
                         {project.link !== "#" && (
-                          <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-foreground transition-colors ml-auto" />
+                          <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-foreground transition-colors ml-auto hidden sm:block" />
                         )}
                       </div>
-                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">{project.description}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-4">{project.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
-                          <span key={tag} className="text-[11px] px-3 py-1 rounded-lg border border-border text-muted-foreground font-medium">
+                          <span key={tag} className="text-[11px] px-3 py-1 rounded-full border border-border/50 text-muted-foreground font-medium">
                             {tag}
                           </span>
                         ))}
