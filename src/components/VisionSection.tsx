@@ -2,10 +2,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const beliefs = [
-  { num: "01", title: "Execution over noise", text: "Strong ideas only matter when they become usable products. Shipping creates proof, momentum, and trust." },
-  { num: "02", title: "Design for clarity", text: "The best interfaces reduce friction. They feel calm, obvious, and sharp on every screen size." },
-  { num: "03", title: "Build with intent", text: "Every feature should earn its place. Simplicity is not less effort, it is more discipline." },
-  { num: "04", title: "Learn in public", text: "Every launch is feedback. Every iteration is a step toward stronger products and better judgment." },
+  { num: "01", title: "Ship with intent", text: "Ideas mean nothing without execution. Every feature earns its place through clarity and discipline." },
+  { num: "02", title: "Design for humans", text: "The best interfaces reduce friction. They feel calm, obvious, and elegant on every screen." },
+  { num: "03", title: "Stay fast, stay sharp", text: "Speed without quality is noise. The work moves quickly, but the standards never drop." },
+  { num: "04", title: "Build in public", text: "Every launch is feedback. Every iteration is a step toward stronger products and better craft." },
 ];
 
 export const VisionSection = () => {
@@ -13,18 +13,18 @@ export const VisionSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section ref={ref} className="section-padding relative">
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section ref={ref} className="section-padding">
+      <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="mb-12 md:mb-16"
+          transition={{ duration: 0.6 }}
+          className="mb-10 md:mb-14"
         >
-          <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-4 block">
+          <span className="text-[10px] sm:text-xs font-semibold tracking-[0.22em] uppercase text-muted-foreground mb-3 block">
             Philosophy
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-heading font-bold text-foreground leading-[1.1]">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-foreground leading-[1.1]">
             Principles behind the <span className="shimmer-text">work</span>
           </h2>
         </motion.div>
@@ -33,13 +33,12 @@ export const VisionSection = () => {
           {beliefs.map((b, i) => (
             <motion.div
               key={b.num}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -4, transition: { duration: 0.25 } }}
-              className="glass-card p-6 sm:p-8 cursor-default"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="glass-card p-6 cursor-default"
             >
-              <span className="text-[10px] font-heading font-bold text-muted-foreground/40 tracking-widest mb-4 block">
+              <span className="text-[10px] font-heading font-bold text-muted-foreground/40 tracking-widest mb-3 block">
                 {b.num}
               </span>
               <h3 className="font-heading text-base sm:text-lg font-bold text-foreground mb-2">{b.title}</h3>

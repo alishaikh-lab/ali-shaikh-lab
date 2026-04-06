@@ -23,15 +23,11 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
+  useEffect(() => { setIsOpen(false); }, [location]);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
   return (
@@ -39,96 +35,73 @@ export const Navbar = () => {
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4"
       >
         <nav
-          className={`glass-nav mx-auto flex max-w-6xl items-center justify-between rounded-[1.75rem] px-3 py-2.5 sm:px-4 lg:px-5 transition-all duration-700 ${
-            scrolled ? "translate-y-0 shadow-[0_22px_60px_rgba(15,23,42,0.14)]" : ""
+          className={`glass-nav mx-auto flex max-w-5xl items-center justify-between rounded-full px-4 py-2 sm:px-5 transition-all duration-500 ${
+            scrolled ? "shadow-[0_8px_32px_rgba(0,0,0,0.1)]" : ""
           }`}
         >
-          <Link to="/" className="group flex min-w-0 items-center gap-3 text-foreground">
+          <Link to="/" className="group flex items-center gap-2.5 text-foreground">
             <motion.span
-              whileHover={{ rotate: -8, scale: 1.06 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-2xl bg-foreground text-xs font-bold text-background shadow-lg"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-foreground text-xs font-bold text-background"
             >
               A
             </motion.span>
-            <span className="min-w-0 leading-none">
-              <span className="block font-heading text-sm font-bold tracking-tight">Ali Shaikh</span>
-              <span className="hidden sm:block mt-1 text-[10px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
-                Design x Product x AI
-              </span>
-            </span>
+            <span className="font-heading text-sm font-bold tracking-tight">Ali Shaikh</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
-            <div className="flex items-center gap-1 rounded-full bg-background/60 px-2 py-1">
+            <div className="flex items-center rounded-full bg-muted/50 px-1 py-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="relative rounded-full px-4 py-2 text-[12px] font-medium transition-all duration-300"
+                  className="relative rounded-full px-4 py-2 text-[13px] font-medium transition-all duration-300"
                 >
                   {location.pathname === link.path && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 rounded-full bg-foreground shadow-lg"
-                      transition={{ type: "spring", stiffness: 500, damping: 36 }}
+                      className="absolute inset-0 rounded-full bg-foreground"
+                      transition={{ type: "spring", stiffness: 500, damping: 35 }}
                     />
                   )}
-                  <span
-                    className={`relative z-10 transition-colors duration-300 ${
-                      location.pathname === link.path ? "text-background" : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
+                  <span className={`relative z-10 ${
+                    location.pathname === link.path ? "text-background" : "text-muted-foreground hover:text-foreground"
+                  }`}>
                     {link.label}
                   </span>
                 </Link>
               ))}
             </div>
-
             <div className="ml-2 flex items-center gap-2">
               <ThemeToggle />
-              <Link
-                to="/contact"
-                className="inline-flex items-center rounded-full bg-foreground px-4 py-2 text-[12px] font-medium text-background transition-transform duration-300 hover:-translate-y-0.5"
-              >
-                Let&apos;s Talk
+              <Link to="/contact" className="btn-primary px-4 py-2 text-[13px]">
+                Let's Talk
               </Link>
             </div>
           </div>
 
-          <div className="flex items-center gap-1 md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
             <motion.button
-              whileTap={{ scale: 0.92 }}
-              onClick={() => setIsOpen((open) => !open)}
-              className="rounded-full bg-background/70 p-2.5 text-foreground transition-colors hover:bg-secondary/70"
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setIsOpen((o) => !o)}
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-muted text-foreground"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    <X size={18} />
+                  <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                    <X size={16} />
                   </motion.div>
                 ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    <Menu size={18} />
+                  <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                    <Menu size={16} />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -143,47 +116,32 @@ export const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 md:hidden"
           >
+            <div className="absolute inset-0 bg-background/80 backdrop-blur-2xl" onClick={() => setIsOpen(false)} />
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-background/78 backdrop-blur-2xl"
-              onClick={() => setIsOpen(false)}
-            />
-
-            <motion.div
-              initial={{ opacity: 0, y: -12, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -12, scale: 0.98 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10 mx-3 mt-24 rounded-[2rem] glass-strong p-4 shadow-2xl"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="relative z-10 mx-4 mt-20 rounded-2xl glass-strong p-5"
             >
-              <div className="px-2 pb-4">
-                <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-muted-foreground">Navigation</p>
-                <p className="mt-2 text-sm font-heading font-semibold text-foreground">
-                  Move through the site with a cleaner mobile flow.
-                </p>
-              </div>
-
-              <div className="space-y-2">
+              <div className="space-y-1">
                 {navLinks.map((link, i) => (
                   <motion.div
                     key={link.path}
-                    initial={{ opacity: 0, y: 16 }}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 12 }}
-                    transition={{ delay: i * 0.05, duration: 0.28 }}
+                    transition={{ delay: i * 0.04, duration: 0.25 }}
                   >
                     <Link
                       to={link.path}
                       onClick={() => setIsOpen(false)}
-                      className={`block rounded-2xl px-5 py-4 text-base font-heading font-semibold transition-all duration-300 ${
+                      className={`block rounded-xl px-4 py-3.5 text-[15px] font-heading font-semibold transition-all ${
                         location.pathname === link.path
-                          ? "bg-foreground text-background shadow-lg"
-                          : "bg-background/45 text-foreground"
+                          ? "bg-foreground text-background"
+                          : "text-foreground hover:bg-muted"
                       }`}
                     >
                       {link.label}
@@ -191,13 +149,12 @@ export const Navbar = () => {
                   </motion.div>
                 ))}
               </div>
-
               <Link
                 to="/contact"
                 onClick={() => setIsOpen(false)}
-                className="mt-4 inline-flex w-full items-center justify-center rounded-2xl bg-[hsl(var(--highlight))] px-5 py-4 text-sm font-medium text-white shadow-lg"
+                className="mt-4 block w-full rounded-xl bg-foreground px-5 py-3.5 text-center text-sm font-medium text-background"
               >
-                Start a Project
+                Let's Talk
               </Link>
             </motion.div>
           </motion.div>
