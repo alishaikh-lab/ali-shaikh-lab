@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 const socials = [
   { name: "Instagram", handle: "@alishaikh.79", url: "https://www.instagram.com/alishaikh.79" },
   { name: "LinkedIn", handle: "Ali Shaikh", url: "https://www.linkedin.com/in/ali-shaikh-2965a93a9" },
-  { name: "X (Twitter)", handle: "@AliShaikh79", url: "https://x.com/AliShaikh79" },
+  { name: "X", handle: "@AliShaikh79", url: "https://x.com/AliShaikh79" },
   { name: "Threads", handle: "@alishaikh.79", url: "https://www.threads.com/@alishaikh.79" },
   { name: "YouTube", handle: "@alishaikh.79", url: "https://youtube.com/@alishaikh.79" },
   { name: "Pinterest", handle: "Ali Shaikh", url: "https://pin.it/7EgqezxXL" },
@@ -22,31 +22,31 @@ export const SocialLinks = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-8 md:mb-12"
+          className="mb-10 md:mb-14"
         >
           <span className="text-[10px] sm:text-xs font-semibold tracking-[0.22em] uppercase text-muted-foreground mb-3 block">Connect</span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-foreground leading-[1.1]">
-            Find me <span className="shimmer-text">everywhere</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-[1.05]">
+            Let's be <span className="shimmer-text">internet friends</span>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="space-y-0 border-t border-border/40">
           {socials.map((s, i) => (
             <motion.a
               key={s.name}
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="group flex items-center justify-between p-4 glass-card"
+              className="group flex items-center justify-between py-4 sm:py-5 border-b border-border/40 hover:pl-3 transition-all duration-300"
             >
-              <div className="min-w-0">
-                <span className="block font-heading font-bold text-foreground text-sm">{s.name}</span>
-                <span className="block text-[11px] text-muted-foreground mt-0.5 truncate">{s.handle}</span>
+              <div className="flex items-center gap-4">
+                <span className="font-heading font-bold text-foreground text-base sm:text-lg">{s.name}</span>
+                <span className="text-[11px] sm:text-xs text-muted-foreground">{s.handle}</span>
               </div>
-              <ArrowUpRight size={14} className="text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0 ml-2" />
+              <ArrowUpRight size={16} className="text-muted-foreground/40 group-hover:text-foreground group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
             </motion.a>
           ))}
         </div>
