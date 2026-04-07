@@ -37,7 +37,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.6 }}
           className="flex items-center gap-3 mb-8 sm:mb-10"
         >
-          <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="inline-flex h-2 w-2 rounded-full bg-foreground/60 animate-pulse" />
           <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase text-muted-foreground font-medium">
             Open to collaborate
           </span>
