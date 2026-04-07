@@ -1,51 +1,65 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const quotes = [
-  { text: "The future belongs to the people willing to build it, refine it, and ship it.", source: "Ali Shaikh" },
-  { text: "Capability is not a headline. It is the quality of work you can consistently deliver.", source: "Ali Shaikh" },
-  { text: "Every product starts as an idea. The craft is turning that into an experience people trust.", source: "Ali Shaikh" },
+  "The future belongs to the people willing to build it — not just discuss it.",
+  "Good taste is the rarest competitive advantage. Most people underestimate it.",
+  "Ship fast, learn faster. Perfection is a trap disguised as professionalism.",
 ];
 
 export const TestimonialsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % quotes.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section ref={ref} className="section-padding">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-10 md:mb-14"
         >
-          <span className="text-[10px] sm:text-xs font-semibold tracking-[0.22em] uppercase text-muted-foreground mb-3 block">
-            Mindset
+          <span className="text-[10px] sm:text-xs font-semibold tracking-[0.22em] uppercase text-muted-foreground mb-6 block">
+            Convictions
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-foreground leading-[1.1]">
-            Words I <span className="shimmer-text">live by</span>
-          </h2>
-        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-3">
-          {quotes.map((q, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 16 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="glass-card p-6 cursor-default"
-            >
-              <p className="text-sm sm:text-[15px] text-foreground leading-relaxed mb-4 font-medium">
-                "{q.text}"
-              </p>
-              <span className="text-[11px] text-muted-foreground font-heading font-semibold tracking-wider uppercase">
-                — {q.source}
-              </span>
-            </motion.div>
-          ))}
-        </div>
+          <div className="relative min-h-[120px] sm:min-h-[140px] flex items-center justify-center">
+            {quotes.map((quote, i) => (
+              <motion.p
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{
+                  opacity: activeIdx === i ? 1 : 0,
+                  y: activeIdx === i ? 0 : 10,
+                }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0 flex items-center justify-center text-xl sm:text-2xl md:text-3xl font-heading font-bold text-foreground leading-[1.2] px-4"
+              >
+                "{quote}"
+              </motion.p>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-center gap-2 mt-8">
+            {quotes.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIdx(i)}
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  activeIdx === i ? "w-8 bg-foreground" : "w-1.5 bg-border"
+                }`}
+              />
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
