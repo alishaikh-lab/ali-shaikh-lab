@@ -1,61 +1,56 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
-const quotes = [
-  "The future belongs to the people willing to build it — not just discuss it.",
-  "Good taste is the rarest competitive advantage. Most people underestimate it.",
+const convictions = [
+  "The future belongs to people willing to build it — not just debate it.",
+  "Good taste is the rarest competitive advantage. Most underestimate it.",
   "Ship fast, learn faster. Perfection is a trap disguised as professionalism.",
 ];
 
 export const TestimonialsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
-  const [activeIdx, setActiveIdx] = useState(0);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const [idx, setIdx] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIdx((prev) => (prev + 1) % quotes.length);
-    }, 4500);
-    return () => clearInterval(interval);
+    const timer = setInterval(() => setIdx((p) => (p + 1) % convictions.length), 5000);
+    return () => clearInterval(timer);
   }, []);
 
   return (
-    <section ref={ref} className="section-padding">
+    <section ref={ref} className="section-padding section-spacing">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
         >
-          <span className="text-[10px] sm:text-xs font-semibold tracking-[0.22em] uppercase text-muted-foreground mb-6 block">
-            Convictions
-          </span>
+          <span className="eyebrow mb-8 block">Convictions</span>
 
-          <div className="relative min-h-[120px] sm:min-h-[140px] flex items-center justify-center">
-            {quotes.map((quote, i) => (
+          <div className="relative min-h-[100px] sm:min-h-[130px] flex items-center justify-center">
+            <AnimatePresence mode="wait">
               <motion.p
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: activeIdx === i ? 1 : 0,
-                  y: activeIdx === i ? 0 : 10,
-                }}
+                key={idx}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0 flex items-center justify-center text-xl sm:text-2xl md:text-3xl font-heading font-bold text-foreground leading-[1.2] px-4"
+                className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-foreground leading-[1.25] px-4"
               >
-                "{quote}"
+                "{convictions[idx]}"
               </motion.p>
-            ))}
+            </AnimatePresence>
           </div>
 
-          <div className="flex items-center justify-center gap-2 mt-8">
-            {quotes.map((_, i) => (
+          <div className="flex items-center justify-center gap-2 mt-10">
+            {convictions.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setActiveIdx(i)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${
-                  activeIdx === i ? "w-8 bg-foreground" : "w-1.5 bg-border"
+                onClick={() => setIdx(i)}
+                className={`h-1.5 rounded-full transition-all duration-600 ${
+                  idx === i ? "w-8 bg-foreground" : "w-1.5 bg-border hover:bg-muted-foreground/30"
                 }`}
+                aria-label={`Quote ${i + 1}`}
               />
             ))}
           </div>
