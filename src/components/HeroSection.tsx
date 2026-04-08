@@ -1,130 +1,120 @@
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import aliImage from "@/assets/ali-shaikh.webp";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const letterReveal = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.08, duration: 0.6, ease },
-  }),
-};
-
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-[100svh] flex items-end overflow-hidden px-5 sm:px-6 md:px-10 lg:px-16 xl:px-20 pb-10 sm:pb-14 md:pb-16 pt-28 sm:pt-32">
-      {/* Ambient gradient orbs */}
+    <section className="relative min-h-[100svh] flex flex-col justify-end section-padding pb-12 sm:pb-16 pt-28 sm:pt-32 overflow-hidden">
+      {/* Ambient blobs */}
       <motion.div
-        animate={{ x: [0, 60, -30, 0], y: [0, -40, 30, 0], scale: [1, 1.1, 0.95, 1] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="liquid-blob w-[600px] h-[600px] bg-foreground -top-60 -left-60"
+        animate={{ x: [0, 50, -20, 0], y: [0, -30, 20, 0], scale: [1, 1.05, 0.97, 1] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        className="liquid-blob w-[500px] h-[500px] bg-foreground -top-40 -left-40"
       />
       <motion.div
-        animate={{ x: [0, -40, 30, 0], y: [0, 30, -25, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-        className="liquid-blob w-[500px] h-[500px] bg-foreground bottom-0 right-[-10%]"
+        animate={{ x: [0, -30, 20, 0], y: [0, 20, -15, 0] }}
+        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", delay: 5 }}
+        className="liquid-blob w-[400px] h-[400px] bg-foreground bottom-20 right-[-5%]"
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full">
-        {/* Top bar with status */}
+      <div className="relative z-10 max-w-5xl mx-auto w-full">
+        {/* Status */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-3 mb-8 sm:mb-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex items-center gap-3 mb-10 sm:mb-14"
         >
-          <span className="inline-flex h-2 w-2 rounded-full bg-foreground/60 animate-pulse" />
-          <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase text-muted-foreground font-medium">
-            Open to collaborate
-          </span>
-          <div className="flex-1 h-px bg-border/50" />
+          <span className="h-1.5 w-1.5 rounded-full bg-foreground/50 animate-pulse" />
+          <span className="eyebrow">Open to collaborate</span>
         </motion.div>
 
-        {/* Main grid — text + image */}
-        <div className="grid gap-8 lg:grid-cols-[1fr_0.5fr] lg:gap-16 items-end">
+        {/* Main layout */}
+        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:gap-20 items-end">
           <div>
-            {/* Large editorial heading */}
-            <div className="overflow-hidden mb-3">
+            {/* Headline — one clear message */}
+            <div className="overflow-hidden">
               <motion.h1
-                className="text-[2.6rem] leading-[0.95] sm:text-[4rem] md:text-[5rem] lg:text-[5.6rem] font-heading font-bold tracking-[-0.04em] text-foreground"
+                initial={{ y: 80 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, ease }}
+                className="text-[2.8rem] leading-[0.92] sm:text-[4.2rem] md:text-[5.2rem] lg:text-[6rem] font-heading font-bold tracking-[-0.045em] text-foreground"
               >
-                {"I design".split("").map((char, i) => (
-                  <motion.span key={i} custom={i} variants={letterReveal} initial="hidden" animate="visible" className="inline-block">
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                ))}
-              </motion.h1>
-            </div>
-            <div className="overflow-hidden mb-3">
-              <motion.h1
-                className="text-[2.6rem] leading-[0.95] sm:text-[4rem] md:text-[5rem] lg:text-[5.6rem] font-heading font-bold tracking-[-0.04em]"
-              >
-                {"& build".split("").map((char, i) => (
-                  <motion.span key={i} custom={i + 8} variants={letterReveal} initial="hidden" animate="visible" className="inline-block text-outline">
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                ))}
-                {" "}
-                {"digital".split("").map((char, i) => (
-                  <motion.span key={i} custom={i + 14} variants={letterReveal} initial="hidden" animate="visible" className="inline-block shimmer-text">
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                ))}
+                I craft digital
               </motion.h1>
             </div>
             <div className="overflow-hidden">
               <motion.h1
-                className="text-[2.6rem] leading-[0.95] sm:text-[4rem] md:text-[5rem] lg:text-[5.6rem] font-heading font-bold tracking-[-0.04em] text-foreground"
+                initial={{ y: 80 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, ease, delay: 0.08 }}
+                className="text-[2.8rem] leading-[0.92] sm:text-[4.2rem] md:text-[5.2rem] lg:text-[6rem] font-heading font-bold tracking-[-0.045em]"
               >
-                {"products.".split("").map((char, i) => (
-                  <motion.span key={i} custom={i + 21} variants={letterReveal} initial="hidden" animate="visible" className="inline-block">
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                ))}
+                <span className="text-outline">experiences</span>
+              </motion.h1>
+            </div>
+            <div className="overflow-hidden">
+              <motion.h1
+                initial={{ y: 80 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, ease, delay: 0.16 }}
+                className="text-[2.8rem] leading-[0.92] sm:text-[4.2rem] md:text-[5.2rem] lg:text-[6rem] font-heading font-bold tracking-[-0.045em] text-foreground"
+              >
+                that <span className="shimmer-text">resonate.</span>
               </motion.h1>
             </div>
 
-            {/* Description */}
+            {/* Sub copy */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
-              className="mt-6 sm:mt-8 max-w-md text-sm sm:text-[15px] text-muted-foreground leading-[1.7]"
+              transition={{ delay: 0.9, duration: 0.6 }}
+              className="mt-8 sm:mt-10 max-w-sm text-[14px] sm:text-[15px] text-muted-foreground leading-[1.75]"
             >
-              Ali Shaikh — 16-year-old builder from Pune crafting
-              products at the intersection of design, AI, and
-              relentless execution.
+              Builder from Pune, 16. Turning bold ideas into products
+              people actually love — at the intersection of design,
+              technology, and relentless execution.
             </motion.p>
 
-            {/* CTA row */}
+            {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4, duration: 0.5 }}
-              className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3"
+              transition={{ delay: 1.1, duration: 0.5 }}
+              className="mt-7 sm:mt-8 flex flex-col sm:flex-row gap-3"
             >
-              <Link to="/projects" className="group btn-primary w-full sm:w-auto">
-                See my work
-                <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <Link
+                to="/projects"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-6px_rgba(0,0,0,0.15)]"
+              >
+                Explore my work
+                <motion.span
+                  className="inline-block"
+                  whileHover={{ x: 3, y: -3 }}
+                >
+                  ↗
+                </motion.span>
               </Link>
-              <Link to="/contact" className="btn-secondary w-full sm:w-auto">
-                Let's connect
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3.5 text-sm font-medium text-foreground transition-all duration-300 hover:bg-muted"
+              >
+                Say hello
               </Link>
             </motion.div>
           </div>
 
-          {/* Photo card */}
+          {/* Photo */}
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="relative hidden lg:block"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4, ease }}
+            className="hidden lg:block w-[240px] xl:w-[280px]"
           >
-            <div className="glass-card p-2.5 group">
+            <div className="glass-card p-2 group">
               <div className="relative rounded-xl overflow-hidden aspect-[3/4]">
                 <img
                   src={aliImage}
@@ -132,54 +122,44 @@ export const HeroSection = () => {
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--foreground)/0.6)] via-transparent to-transparent" />
-                <div className="absolute left-3 right-3 bottom-3 rounded-lg glass px-3 py-2.5">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Pune, India</p>
-                      <p className="text-xs font-semibold text-foreground mt-0.5">Ali Shaikh</p>
-                    </div>
-                    <span className="rounded-full bg-foreground px-2.5 py-1 text-[9px] font-bold text-background uppercase tracking-wider">
-                      Available
-                    </span>
-                  </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent" />
+                <div className="absolute left-2.5 right-2.5 bottom-2.5 rounded-lg glass px-3 py-2">
+                  <p className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground">Pune, India</p>
+                  <p className="text-xs font-semibold text-foreground mt-0.5">Ali Shaikh</p>
                 </div>
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Bottom stats bar */}
+        {/* Minimal stats */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.6, duration: 0.5 }}
-          className="mt-10 sm:mt-14 flex flex-wrap items-center gap-6 sm:gap-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.4, duration: 0.6 }}
+          className="mt-14 sm:mt-20 flex flex-wrap gap-8 sm:gap-14"
         >
           {[
             { val: "10+", label: "Products shipped" },
             { val: "2+", label: "Years building" },
-            { val: "AI × Design", label: "Core intersection" },
-          ].map((stat, i) => (
-            <div key={stat.label} className="flex items-center gap-3">
-              {i > 0 && <div className="h-6 w-px bg-border hidden sm:block" />}
-              <div>
-                <p className="text-lg sm:text-xl font-heading font-bold text-foreground">{stat.val}</p>
-                <p className="text-[10px] sm:text-[11px] text-muted-foreground tracking-wide">{stat.label}</p>
-              </div>
+            { val: "AI × Design", label: "Sweet spot" },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <p className="text-xl sm:text-2xl font-heading font-bold text-foreground">{stat.val}</p>
+              <p className="text-[11px] text-muted-foreground mt-0.5 tracking-wide">{stat.label}</p>
             </div>
           ))}
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Scroll hint */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.5 }}
-          className="absolute -bottom-4 left-1/2 hidden -translate-x-1/2 lg:flex flex-col items-center gap-1"
+          transition={{ delay: 2.2 }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:block"
         >
-          <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.8, repeat: Infinity }}>
-            <ArrowDown size={12} className="text-muted-foreground" />
+          <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity }}>
+            <ArrowDown size={14} className="text-muted-foreground/40" />
           </motion.div>
         </motion.div>
       </div>
